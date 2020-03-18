@@ -13,10 +13,12 @@ func main() {
 	router := httprouter.New()
 
 	AddResource(router, new(HelloResource))
+	AddResource(router, new(ContentsWrite))
 
 	log.Fatal(http.ListenAndServe(":8120", router))
 }
 
+// HelloResource : 안녕디지몬
 type HelloResource struct {
 	PostNotSupported
 	PutNotSupported
@@ -29,7 +31,7 @@ func (HelloResource) Uri() string {
 
 func (HelloResource) Get(rw http.ResponseWriter, r *http.Request, ps httprouter.Params) Response {
 	return Response{200, "message", map[string]interface{}{
-		"key1": "value1",
+		"키키": "안녕 디지몬",
 	}}
 }
 
